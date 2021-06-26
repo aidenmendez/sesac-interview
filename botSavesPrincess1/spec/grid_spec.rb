@@ -7,18 +7,22 @@ RSpec.describe Grid do
     let(:grid) {Grid.new(size)}
 
     it "is an instance of Grid" do
-      expect(grid.class).to be_a(Grid)
+      expect(grid).to be_a(Grid)
     end
 
     it "has valid attributes" do
       expect(grid.size).to eq(size)
-      expect(grid.layout).to eq(['p--'], ['-m-'], ['---'])
-      expect(grid.me).to eq([2,2])
-      expect(grid.princess).to eq([0,0])
+      expect(grid.layout).to eq([['p--'], ['-m-'], ['---']])
+      expect(grid.my_location).to eq([2,2])
+      expect(grid.princess_location).to eq([0,0])
     end
-  end
-  
-  descibe "(sad path)" do
 
+    it "can have dimensions greater than three" do
+      grid2 = Grid.new(9)
+      expect(grid.size).to eq(size)
+      expect(grid.layout).to eq([['p--------'], ['----m----'], ['---------']])
+      expect(grid.my_location).to eq([5,5])
+      expect(grid.princess_location).to eq([0,0])
+    end
   end
 end
