@@ -21,4 +21,10 @@ RSpec.describe Grid do
       # expect(grid2.princess_location).to eq([0,4])
     end
   end
+
+  describe "(sad path)" do
+    it "raises error if size param is less than 3" do
+      expect{ Grid.new(2, ["p--", "-m-", "---"]) }.to raise_error(ArgumentError)    
+    end
+  end
 end
