@@ -1,10 +1,10 @@
 class Princess
-  attr_reader :x, :y
+  attr_reader :row, :col
 
   def initialize(grid)
     @grid = grid
-    @x = self.locate[0]
-    @y = self.locate[0]
+    @row = self.locate[0]
+    @col = self.locate[1]
   end
   
   def locate
