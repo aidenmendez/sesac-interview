@@ -3,7 +3,7 @@ class Grid
 
   def initialize(size, grid)
     raise ArgumentError.new('Size parameter must be greater than 2') if size < 3
-
+    raise ArgumentError.new('Size parameter must be an even number') if size % 2.0 == 0
 
     @size = size
     @input_grid = grid
