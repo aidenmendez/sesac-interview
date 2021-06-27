@@ -24,7 +24,11 @@ RSpec.describe Grid do
 
   describe "(sad path)" do
     it "raises error if size param is less than 3" do
-      expect{ Grid.new(2, ["p--", "-m-", "---"]) }.to raise_error(ArgumentError)    
+      expect{ Grid.new(2, ["p-", "-m"]) }.to raise_error(ArgumentError)    
+    end
+
+    it "raises an error if size is an even number" do
+      expect{ Grid.new(4, ["p---", "-m--", "----", "----"])}
     end
   end
 end
