@@ -28,7 +28,13 @@ RSpec.describe Grid do
     end
 
     it "raises an error if size is an even number" do
-      expect{ Grid.new(4, ["p---", "-m--", "----", "----"])}
+      expect{ Grid.new(4, ["p---", "-m--", "----", "----"])}.to raise_error(ArgumentError)
+    end
+
+    it "raises an error if size and actual grid size don't match" do
+      expect{ Grid.new(3, ["p--", "-m-"]) }.to raise_error(ArgumentError)
+      expect{ Grid.new(3, ["p-", "-m-", "---"]) }.to raise_error(ArgumentError)
+      expect{ Grid.new(3, ["p-", "-m---", "---"]) }.to raise_error(ArgumentError)
     end
   end
 end
