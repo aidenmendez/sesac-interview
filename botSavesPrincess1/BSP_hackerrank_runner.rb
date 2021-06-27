@@ -2,6 +2,8 @@ class Grid
   attr_reader :size, :input_grid
 
   def initialize(size, grid)
+    check_params(size,grid)
+
     @size = size
     @input_grid = grid
   end
@@ -10,6 +12,20 @@ class Grid
     mid = (@size / 2.0).ceil - 1
 
     [mid, mid]
+  end
+
+  private
+
+  def check_params(size, grid)
+    raise ArgumentError.new('Size parameter must be greater than 2') if size < 3
+    raise ArgumentError.new('Size parameter must be an even number') if size % 2.0 == 0
+    raise ArgumentError.new('Size does not match actual grid dimensions') if grid.count != size
+
+    grid.each do |row|
+      if row.length != size
+        raise ArgumentError.new('Size does not match actual grid dimensions')
+      end
+    end
   end
 end
 
@@ -26,8 +42,14 @@ class Princess
     limit = @grid.size - 1
     possible_locations = [[0, 0], [0, limit], [limit, 0], [limit, limit]]
     
-    possible_locations.find do |coord|
+    location = possible_locations.find do |coord|
       @grid.input_grid[coord[0]][coord[1]] == 'p'
+    end
+
+    if location == nil
+      raise ArgumentError.new('Princess is not in a corner or does not exist')
+    else
+      location
     end
   end
 end
