@@ -46,4 +46,13 @@ RSpec.describe Princess do
       end
     end
   end
+
+  describe "(sad path)" do
+    let(:grid) {Grid.new(5, ["-----", "-----", "--m--", "-----", "-----"])}
+    let(:princess) {Princess.new(grid)}
+
+    it "raises an error if princess can't be found" do
+      expect{ Princess.new(grid) }.to raise_error(ArgumentError)
+    end
+  end
 end
