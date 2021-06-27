@@ -1,22 +1,23 @@
 class Grid
-  attr_reader :size
+  attr_reader :size, :grid
 
-  def initialize(size)
+  def initialize(size, grid)
     @size = size
+    @grid = grid
   end
 
-  def layout
-    grid_layout = [['p--'], ['-m-'], ['---']]
-  end
-
-  def my_location
-    mid = (@size / 2.0).ceil
+  def bot_location
+    mid = (@size / 2.0).ceil - 1
 
     coordinates = [mid, mid]
   end
 
-  def princess_location(coords = [0,0])
-    # if princess will always be in corner of square, use top left
-    coordinates = [0, 0]
+  def princess_location
+    limit = @size - 1
+    possible_locations = [[0, 0], [0, limit], [limit, 0], [limit, limit]]
+    
+    possible_locations.find do |coord|
+      grid[coord[0]][coord[1]] == 'p'
+    end
   end
 end
