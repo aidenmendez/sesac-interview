@@ -14,5 +14,9 @@ RSpec.describe Navigation do
     it "is an instance of Navigation" do
       expect(navigation).to be_a(Navigation)
     end
+
+    it "has correct attributes" do
+      expect(navigation.grid).to be_a(Grid)
+    end
   end
 end
