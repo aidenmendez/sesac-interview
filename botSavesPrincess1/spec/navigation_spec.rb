@@ -17,6 +17,12 @@ RSpec.describe Navigation do
 
     it "has correct attributes" do
       expect(navigation.grid).to be_a(Grid)
+      expect(navigation.princess).to be_a(Princess)
+      expect(navigation.bot).to be_a(Bot)
+    end
+
+    it "can return directions" do
+      expect(navigation.get_directions).to eq("UP \n LEFT")
     end
   end
 end
