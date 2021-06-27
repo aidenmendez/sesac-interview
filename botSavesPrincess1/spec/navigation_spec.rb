@@ -22,7 +22,8 @@ RSpec.describe Navigation do
     end
 
     it "can return directions" do
-      expect(navigation.get_directions).to eq("UP \n LEFT")
+      directions = ["UP", "LEFT"]
+      expect(navigation.get_directions).to eq(directions)
     end
   end
 end
