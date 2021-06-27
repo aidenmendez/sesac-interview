@@ -1,14 +1,12 @@
 class Navigation
-  attr_reader :grid, :princess, :bot
+  attr_reader :princess, :bot
 
-  def initialize(grid, princess, bot)
-    @grid = grid
+  def initialize(princess, bot)
     @princess = princess
     @bot = bot
   end
 
   def get_directions
-    # keep track of current bot position
     directions = []
     x = @bot.x
     y = @bot.y
