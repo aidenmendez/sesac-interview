@@ -8,28 +8,22 @@ class Navigation
 
   def get_directions
     directions = []
-    @bot.row
-    @bot.col
 
-    while @bot.col != @princess.row
-      if @bot.col < @princess.row
-        @bot.col += 1
-        directions << "DOWN"
-      elsif @bot.col > @princess.row
-        @bot.col -= 1
-        directions << "UP"
-      end
+  while @bot.col != @princess.col || @bot.row != @princess.row
+    if @bot.row < @princess.row
+      @bot.row += 1
+      directions << "DOWN"
+    elsif @bot.row > @princess.row
+      @bot.row -= 1
+      directions << "UP"
+    elsif @bot.col < @princess.col
+      @bot.col += 1
+      directions << "RIGHT"
+    elsif @bot.col > @princess.col
+      @bot.col -= 1
+      directions << "LEFT"
     end
-
-    while @bot.row != @princess.col
-      if @bot.row < @princess.col
-        @bot.row += 1
-        directions << "RIGHT"
-      elsif @bot.row > @princess.col
-        @bot.row -= 1
-        directions << "LEFT"
-      end
-    end
+  end
 
     directions
   end
