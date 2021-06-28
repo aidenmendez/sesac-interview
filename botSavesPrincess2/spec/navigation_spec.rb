@@ -49,8 +49,8 @@ RSpec.describe Navigation do
     end
 
     describe '(size 3, bottom-right)' do
-      let(:grid) {Grid.new(3, ["---", "-m-", "--p"])}
-      let(:bot) {Bot.new(0, 2)}
+      let(:grid) {Grid.new(3, ["--p", "-m-", "---"])}
+      let(:bot) {Bot.new(1, 1)}
       let(:princess) {Princess.new(grid)}
       let(:navigation) {Navigation.new(princess, bot)}
     
@@ -64,7 +64,10 @@ RSpec.describe Navigation do
       end
     
       it "can return next move" do
-        next_move = "DOWN"
+        next_move = "RIGHT"
+        expect(navigation.get_next_move).to eq(next_move)
+
+        next_move = "UP"
         expect(navigation.get_next_move).to eq(next_move)
       end
     end
