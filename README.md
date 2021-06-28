@@ -40,8 +40,8 @@ This is my submission for SESAC's [Save the Princess](https://www.hackerrank.com
 ## Getting Started
 ### Run in HackerRank
 
-1. First Challenge: visit [Save the Princess](https://www.hackerrank.com/challenges/saveprincess) and paste the contents of [the Challenge 1 runner file](https://github.com/aidenmendez/sesac-interview/blob/main/botSavesPrincess1/BSP_hackerrank_runner.rb) in the editor. Click _Run Code_ to start game.
-2. Second Challenge: visit [Save the Princess 2](https://www.hackerrank.com/challenges/saveprincess2) and paste the contents of [the Challenge 2 runner file](INSERT LINK) in the editor. Click _Run Code_ to start game.
+1. First Challenge: visit [Save the Princess](https://www.hackerrank.com/challenges/saveprincess) and paste the contents of [the Challenge 1 runner file](https://github.com/aidenmendez/sesac-interview/blob/main/BSP1_hackerrank_runner.rb) in the editor. Click _Run Code_ to start game.
+2. Second Challenge: visit [Save the Princess 2](https://www.hackerrank.com/challenges/saveprincess2) and paste the contents of [the Challenge 2 runner file](https://github.com/aidenmendez/sesac-interview/blob/main/BSP2_hackerrank_runner.rb) in the editor. Click _Run Code_ to start game.
 
 ### Install Locally
 
