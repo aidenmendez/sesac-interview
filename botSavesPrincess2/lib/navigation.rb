@@ -5,7 +5,7 @@ class Navigation
     @princess = princess
     @bot = bot
   end
-
+  
   def get_next_move
     if @bot.col < @princess.col
       @bot.col += 1
@@ -19,8 +19,6 @@ class Navigation
     elsif @bot.row > @princess.row
       @bot.row -= 1
       return "UP"
-    else
-      return "Princess found!"
     end
   end
 end

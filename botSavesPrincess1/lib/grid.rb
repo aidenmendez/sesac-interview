@@ -7,13 +7,7 @@ class Grid
     @size = size
     @input_grid = grid
   end
-
-  def bot_location
-    mid = (@size / 2.0).ceil - 1
-
-    [mid, mid]
-  end
-
+  
   private
 
   def check_params(size, grid)
