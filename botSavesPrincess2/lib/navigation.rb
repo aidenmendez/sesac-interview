@@ -6,31 +6,24 @@ class Navigation
     @bot = bot
   end
 
-  def get_directions
-    directions = []
-    x = @bot.x
-    y = @bot.y
+  def get_next_move
+    bot_row = @bot.row
+    bot_col = @bot.col
 
-    while y != @princess.row
-      if y < @princess.row
-        y += 1
-        directions << "DOWN"
-      elsif y > @princess.row
-        y -= 1
-        directions << "UP"
-      end
+    if bot_row < @princess.row
+      @bot.row += 1
+      return "DOWN"
+    elsif bot_row > @princess.row
+      @bot.row -= 1
+      return "UP"
+    elsif bot_col < @princess.col
+      @bot.col += 1
+      return "RIGHT"
+    elsif bot_col > @princess.col
+      @bot.col -= 1
+      return "LEFT"
+    else
+      return "Princess found!"
     end
-
-    while x != @princess.col
-      if x < @princess.col
-        x += 1
-        directions << "RIGHT"
-      elsif x > @princess.col
-        x -= 1
-        directions << "LEFT"
-      end
-    end
-
-    directions
   end
 end

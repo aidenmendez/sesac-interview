@@ -8,7 +8,7 @@ RSpec.describe Navigation do
   describe '(happy path)' do
     describe "(princess location 1)" do
       let(:grid) {Grid.new(3, ["p--", "-m-", "---"])}
-      let(:bot) {Bot.new(grid)}
+      let(:bot) {Bot.new(1, 1)}
       let(:princess) {Princess.new(grid)}
       let(:navigation) {Navigation.new(princess, bot)}
   
@@ -21,15 +21,15 @@ RSpec.describe Navigation do
         expect(navigation.bot).to be_a(Bot)
       end
   
-      it "can return directions" do
-        directions = ["UP", "LEFT"]
-        expect(navigation.get_directions).to eq(directions)
+      it "can return next move" do
+        next_move = "UP"
+        expect(navigation.get_next_move).to eq(next_move)
       end
     end
 
     describe '(size 3, bottom-left)' do
       let(:grid) {Grid.new(3, ["---", "-m-", "p--"])}
-      let(:bot) {Bot.new(grid)}
+      let(:bot) {Bot.new(0, 2)}
       let(:princess) {Princess.new(grid)}
       let(:navigation) {Navigation.new(princess, bot)}
     
@@ -42,15 +42,15 @@ RSpec.describe Navigation do
         expect(navigation.bot).to be_a(Bot)
       end
     
-      it "can return directions" do
-        directions = ["DOWN", "LEFT"]
-        expect(navigation.get_directions).to eq(directions)
+      it "can return next move" do
+        next_move = "DOWN"
+        expect(navigation.get_next_move).to eq(next_move)
       end
     end
 
     describe '(size 3, bottom-right)' do
       let(:grid) {Grid.new(3, ["---", "-m-", "--p"])}
-      let(:bot) {Bot.new(grid)}
+      let(:bot) {Bot.new(0, 2)}
       let(:princess) {Princess.new(grid)}
       let(:navigation) {Navigation.new(princess, bot)}
     
@@ -63,15 +63,15 @@ RSpec.describe Navigation do
         expect(navigation.bot).to be_a(Bot)
       end
     
-      it "can return directions" do
-        directions = ["DOWN", "RIGHT"]
-        expect(navigation.get_directions).to eq(directions)
+      it "can return next move" do
+        next_move = "DOWN"
+        expect(navigation.get_next_move).to eq(next_move)
       end
     end
 
     describe '(size 5, top-right)' do
       let(:grid) {Grid.new(5, ["----p", "-----", "--m--", "-----", "-----"])}
-      let(:bot) {Bot.new(grid)}
+      let(:bot) {Bot.new(2, 2)}
       let(:princess) {Princess.new(grid)}
       let(:navigation) {Navigation.new(princess, bot)}
     
@@ -84,9 +84,18 @@ RSpec.describe Navigation do
         expect(navigation.bot).to be_a(Bot)
       end
     
-      it "can return directions" do
-        directions = ["UP", "UP", "RIGHT", "RIGHT"]
-        expect(navigation.get_directions).to eq(directions)
+      it "can return next moves when consecutively called" do
+        first_move = "UP"
+        expect(navigation.get_next_move).to eq(first_move)
+
+        second_move = "UP"
+        expect(navigation.get_next_move).to eq(second_move)
+
+        third_move = "RIGHT"
+        expect(navigation.get_next_move).to eq(third_move)
+
+        last_move = "RIGHT"
+        expect(navigation.get_next_move).to eq(last_move)
       end
     end
   end
