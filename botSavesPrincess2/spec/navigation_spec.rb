@@ -22,7 +22,7 @@ RSpec.describe Navigation do
       end
   
       it "can return next move" do
-        next_move = "UP"
+        next_move = "LEFT"
         expect(navigation.get_next_move).to eq(next_move)
       end
     end
@@ -43,7 +43,7 @@ RSpec.describe Navigation do
       end
     
       it "can return next move" do
-        next_move = "DOWN"
+        next_move = "LEFT"
         expect(navigation.get_next_move).to eq(next_move)
       end
     end
@@ -70,8 +70,8 @@ RSpec.describe Navigation do
     end
 
     describe '(size 5, top-right)' do
-      let(:grid) {Grid.new(5, ["----p", "-----", "--m--", "-----", "-----"])}
-      let(:bot) {Bot.new(2, 2)}
+      let(:grid) {Grid.new(5, ["-----", "m----", "-----", "-----", "-p---"])}
+      let(:bot) {Bot.new(1, 0)}
       let(:princess) {Princess.new(grid)}
       let(:navigation) {Navigation.new(princess, bot)}
     
@@ -85,16 +85,16 @@ RSpec.describe Navigation do
       end
     
       it "can return next moves when consecutively called" do
-        first_move = "UP"
+        first_move = "RIGHT"
         expect(navigation.get_next_move).to eq(first_move)
 
-        second_move = "UP"
+        second_move = "DOWN"
         expect(navigation.get_next_move).to eq(second_move)
 
-        third_move = "RIGHT"
+        third_move = "DOWN"
         expect(navigation.get_next_move).to eq(third_move)
 
-        last_move = "RIGHT"
+        last_move = "DOWN"
         expect(navigation.get_next_move).to eq(last_move)
       end
     end
