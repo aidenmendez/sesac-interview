@@ -69,11 +69,20 @@ My initial notes when reading the prompt for this project were:
 - The Grid is like a validated map that could be used by the Bot and Princess, so position validate user inputs there before creating "gamepieces". 
 
 ### Design
- 
-The user input is used to create a Grid, which validates the size and grid array. If no errors are raised, the grid is passed to the Bot and Princess objects during instantiation. This prevents the B & P from being created using invalid input.
-Location Logic: Originally I thought of storing the Bot and Princess grid locations on the Grid object. I decided to move these methods to their respective objects. The objects can now be updated in Navigation without Grid needing to be passed in as a parameter.
-Since the princess could only be in one of the four corners for this first problem, I iterated through an array of the grid's four corners until the princess was found. The bot's coordinates were the midpoint indeces of the row/ column size.
 
+#### Grid
+The user input is used to create a Grid, which validates the size and grid array. If no errors are raised, the grid is passed to the Bot and Princess objects during instantiation. This prevents the B & P from being created using invalid input.
+
+#### Princess
+The Princess doesn't move, so it's position doesn't need to be mutable. Abiding by the matrix convention, there are only four possible positions it can be in: (0,0), (0,n-1), (n-1, 0), and (n-1, n-1). Iterating through these four coordinates yields the position.
+
+#### Bot
+Since it always began in the center, the Bot's location was determined by calculating the grid's midpoint. The column and rows were also made mutable to the object's position could be updated as it's moved in Navigation.
+
+#### Gamepiece Location
+Originally I thought of storing the Bot and Princess grid locations on the Grid object. I decided to move these methods to their respective objects. The objects can now be updated in Navigation without Grid needing to be passed in as a parameter.
+
+#### Navigation
 Navigation Logic: In order for the Bot to traverse to the Princess, the Navigation class compares the Bot's column and row positions to the Princess's. The Bot's vertical position is then increased or decreased  by increments of 1 until it equals the Princess's vertical position. The process is then repeated for the Bot's horizontal position. The movements shoveled into an array while comparing and returned.
 
 ## Challenge 2
@@ -81,11 +90,18 @@ Navigation Logic: In order for the Bot to traverse to the Princess, the Navigati
 
 Notes taken about updates:
 
-- Bot: `row` and `col` will be passed as parameters, so midpoints no longer need to be calculated. 
-- Princess class: The `locate` method will be updated to search each row and column of the grid for `p`
-- Navigation class: The `get_directions` method will be adapted to `get_next_move`. The primary difference is the updated method will only return the next move rather than an array of all moves.
+ #### Bot
+ 
+ `row` and `col` will be passed as parameters, so midpoints no longer need to be calculated. I simply have to replace the midpoint calculation from _BSP1_ with the `r, c` parameters.
+ 
+ #### Princess
 
-Since the solution to _Bot Saves Princess_ only searches for the princess in the four corners, I need to update the method to search row-by-row. By using `each_with_index`, I'm able to determine the `row` value and then search for the index of `p` to determine the `column` value. For the Bot location, I simply have to replace the midpoint calculation from _BSP1_ with the `r, c` parameters.
+The `locate` method will be updated to search each row and column of the grid for `p`. Since the solution to _Bot Saves Princess_ only searches for the princess in the four corners, I need to update the method to search row-by-row. By using `each_with_index`, I'm able to determine the `row` value and then search for the index of `p` to determine the `column` value.
 
-## Refactor Notes
+#### Navigation
+
+The `get_directions` method will be adapted to `get_next_move`. The primary difference is the updated method will only return the next move rather than an array of all moves.
+
+
+### Refactor Notes
 My refactoring included removing a few extraneous variables and improving the semantics for the Bot attributes. I also added simplecov gem to ensure 100% coverage.
