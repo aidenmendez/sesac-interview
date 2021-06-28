@@ -1,9 +1,9 @@
 class Bot
-  attr_reader :x, :y
+  attr_accessor :row, :col
 
   def initialize(grid)
     @grid = grid
-    @x = (@grid.size / 2.0).ceil - 1
-    @y = (@grid.size / 2.0).ceil - 1
+    @row = (@grid.size / 2.0).ceil - 1
+    @col = (@grid.size / 2.0).ceil - 1
   end
 end
