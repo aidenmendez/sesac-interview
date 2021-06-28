@@ -32,7 +32,6 @@ This is my submission for SESAC's [Save the Princess](https://www.hackerrank.com
 
 ### Built With
 
-* [Pry](https://github.com/pry/pry)
 * [RSpec](https://rspec.info/)
 * [Simplecov](https://github.com/simplecov-ruby/simplecov)
 
