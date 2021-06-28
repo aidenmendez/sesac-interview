@@ -1,5 +1,5 @@
 class Bot
-  attr_reader :row, :col
+  attr_accessor :row, :col
 
   def initialize(r, c)
     @row = r
