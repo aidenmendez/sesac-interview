@@ -13,8 +13,8 @@ RSpec.describe Bot do
       end
   
       it "has x and y coordinates" do
-        expect(bot.x).to eq(1)
-        expect(bot.y).to eq(1)
+        expect(bot.row).to eq(1)
+        expect(bot.col).to eq(1)
       end
     end
 
@@ -27,8 +27,8 @@ RSpec.describe Bot do
       end
   
       it "has x and y coordinates" do
-        expect(bot.x).to eq(2)
-        expect(bot.y).to eq(2)
+        expect(bot.row).to eq(2)
+        expect(bot.col).to eq(2)
       end
     end
   end
